@@ -41,4 +41,4 @@ docker-compose down
 
 ## Blog Post
 
-You can find the detailed blog post [here](https://kamnagarg-10157.medium.com/understanding-mutex-in-go-5f41199085b9).
+You can find the detailed blog post [here](https://medium.com/@kamnagarg-10157/learn-docker-through-hands-on-examples-496955847700).
