@@ -1,0 +1,28 @@
+version: '3' # Version of Docker Compose
+
+services:
+  # myapp:
+  #   image: 105513912573.dkr.ecr.ap-northeast-1.amazonaws.com/myapp:latest
+  #   ports:
+  #     - 8080:8080
+  mongodb: # Service for MongoDB
+    image: mongo # Name of the Docker image to use
+    ports:
+      - 27017:27017 # Port mapping between host and container
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin # Environment variable for MongoDB root username
+      - MONGO_INITDB_ROOT_PASSWORD=secret # Environment variable for MongoDB root password
+    volumes:
+      - mongo-data:/data/db
+  mongo-express: # Service for Mongo Express
+    image: mongo-express # Name of the Docker image to use
+    restart: always
+    ports:
+      - 8081:8081 # Port mapping between host and container
+    environment:
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=mongoadmin # Environment variable for Mongo Express admin username
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=secret # Environment variable for Mongo Express admin password
+      - ME_CONFIG_MONGODB_SERVER=mongodb # Environment variable for MongoDB server hostname
+volumes:
+  mongo-data:
+    driver: local
